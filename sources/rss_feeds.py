@@ -40,8 +40,8 @@ def get_wotd(ip_addr):
                 parts = re.split(":", word)
                 parts[0] = parts[0].capitalize()
                 parts[1] = re.sub("\.", "", parts[1])
-                return "".join(["The Word of the Day is ", parts[0], ",", parts[1],
-                                ", and today's IP is: ", ip_addr])
+                return "".join(["The Word of the Day is '", parts[0], ",", parts[1],
+                                "' and today's IP is: ", ip_addr])
 
 
 def get_onion(ip_addr):
@@ -55,7 +55,19 @@ def get_onion(ip_addr):
             return "".join(["In the news today, ", title,
                             " and today's IP is: ", ip_addr])
 
+def get_chinese(ip_addr):
+    fetch = urllib2.urlopen("http://www.mdbg.net/chindict/chindict_feed.php?feed=hsk_1")
+    result = fetch.read()
+    tree = ET.fromstring(result)
+    for element in tree:
+        titles = element.findall("{http://www.w3.org/2005/Atom}title")
+        for title in titles:
+            return "".join(["Today's Chinese word is '", title.text,
+                            "' and today's IP is: ", ip_addr])
+
+
 if __name__ == "__main__":
     #print get_aus_weather("129.161.209.87")
     #print get_wotd("129.161.209.87")
-    print get_onion("124.1234.1234.1")
+    #print get_onion("124.1234.1234.1")
+    #print get_chinese("123.14141.141")
