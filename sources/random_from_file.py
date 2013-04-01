@@ -20,4 +20,4 @@ def get_dictator(ip_addr):
                     " and today's IP is: ", ip_addr])
 
 if __name__ == "__main__":
-    #print get_dictator("123.1234.1")
+    print get_dictator("123.1234.1")
