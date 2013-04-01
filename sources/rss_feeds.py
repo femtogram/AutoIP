@@ -55,6 +55,7 @@ def get_onion(ip_addr):
             return "".join(["In the news today, ", title,
                             " and today's IP is: ", ip_addr])
 
+
 def get_chinese(ip_addr):
     fetch = urllib2.urlopen("http://www.mdbg.net/chindict/chindict_feed.php?feed=hsk_1")
     result = fetch.read()
@@ -67,7 +68,7 @@ def get_chinese(ip_addr):
 
 
 if __name__ == "__main__":
-    #print get_aus_weather("129.161.209.87")
-    #print get_wotd("129.161.209.87")
-    #print get_onion("124.1234.1234.1")
-    #print get_chinese("123.14141.141")
+    print get_aus_weather("129.161.209.87")
+    print get_wotd("129.161.209.87")
+    print get_onion("124.1234.1234.1")
+    print get_chinese("123.14141.141")
